@@ -1,0 +1,73 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "模块三-相同服务测试B",
+    "description": "这里是 OAS 描述...",
+    "version": "1.0.0",
+    "x-ext-example": "这里是示例 OAS info 的扩展"
+  },
+  "tags": [],
+  "paths": {},
+  "components": {
+    "schemas": {},
+    "responses": {
+      "记录不存在": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      },
+      "参数不正确": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {}
+  },
+  "servers": [
+    {
+      "url": "http://dev-cn.your-api-server.com/default/B",
+      "description": "开发环境"
+    },
+    {
+      "url": "",
+      "description": "测试环境"
+    }
+  ],
+  "security": [],
+  "x-ext-example": "这里是示例 OAS 扩展"
+}
