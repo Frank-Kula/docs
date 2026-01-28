@@ -1,0 +1,1427 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "🦄 多模块&多分支&Github备份",
+    "description": "Example API to demonstrate schema linking issues with scheduled data source import",
+    "version": "1.0.0"
+  },
+  "tags": [],
+  "paths": {
+    "/api/v1/api-keys": {
+      "post": {
+        "summary": "Generate an API Key",
+        "deprecated": false,
+        "description": "Create a new API Key",
+        "operationId": "generateApiKey",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddApiKeyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "API Key created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyResponse"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "Record Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AddApiKeyRequest": {
+        "type": "object",
+        "description": "Request body for creating an API Key",
+        "required": [
+          "subscriptionId",
+          "name",
+          "roles"
+        ],
+        "properties": {
+          "subscriptionId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Subscription ID"
+          },
+          "primarySubscriptionId": {
+            "type": "string",
+            "description": "Primary subscription ID",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "API Key name",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "roles": {
+            "type": "array",
+            "description": "List of roles",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "claims": {
+            "type": "array",
+            "description": "List of claims",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ApiKeyResponse": {
+        "type": "object",
+        "description": "API Key response",
+        "required": [
+          "id",
+          "name",
+          "key",
+          "createdAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "API Key ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "API Key name"
+          },
+          "key": {
+            "type": "string",
+            "description": "API Key value",
+            "readOnly": true
+          },
+          "subscriptionId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Subscription ID"
+          },
+          "roles": {
+            "type": "array",
+            "description": "List of roles",
+            "items": {
+              "type": "string"
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Expiration timestamp",
+            "nullable": true
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "description": "Error response",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Error code"
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "details": {
+            "type": "object",
+            "description": "Additional error details",
+            "additionalProperties": true,
+            "properties": {}
+          }
+        }
+      },
+      "MockTestType": {
+        "type": "object",
+        "properties": {
+          "SmartMock": {
+            "type": "object",
+            "properties": {
+              "match_ip": {
+                "type": "string",
+                "description": "命中智能 mock 规则 ip",
+                "title": ""
+              },
+              "dismatch_ip": {
+                "type": "boolean",
+                "description": "类型不符合，不命中智能ip，应返回布尔类型"
+              }
+            },
+            "title": "智能mock",
+            "description": "入口-项目设置项目设置"
+          },
+          "SelfDefinedSmartMock": {
+            "type": "object",
+            "properties": {
+              "match_phone_self_defined": {
+                "type": "string",
+                "description": "该字段符合自定义mock规则"
+              },
+              "dismatch_phone_self_defined": {
+                "type": "boolean",
+                "description": "该字段类型不符合，则不返回自定义智能mock"
+              },
+              "match_phone_self_defined_null": {
+                "type": "string",
+                "description": "允许null",
+                "nullable": true
+              },
+              "match_phone_self_defined_unnecessary": {
+                "type": "string",
+                "description": "非必需"
+              }
+            },
+            "title": "自定义智能mock",
+            "required": [
+              "match_phone_self_defined",
+              "dismatch_phone_self_defined",
+              "match_phone_self_defined_null"
+            ],
+            "description": "入口-项目设置.同时匹配自定义mock和智能mock时，优先自定义mock"
+          },
+          "ApiDefined": {
+            "type": "object",
+            "properties": {
+              "advance_setting_enum": {
+                "type": "string",
+                "description": "字段高级设置，设置了枚举",
+                "enum": [
+                  "api_defined_high"
+                ],
+                "title": "字段高级设置"
+              },
+              "field_mock": {
+                "type": "string",
+                "title": "字段mock"
+              },
+              "advance_setting_enum&field_mock": {
+                "type": "string",
+                "title": "高级设置和mock同时",
+                "enum": [
+                  "api_defined_high"
+                ],
+                "description": "字段mock>字段高级设置"
+              }
+            },
+            "title": "字段定义",
+            "description": "字段编辑器做了定义"
+          }
+        },
+        "required": [
+          "SmartMock",
+          "SelfDefinedSmartMock",
+          "ApiDefined"
+        ]
+      },
+      "TypeNotAllowNull": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "name",
+          "id"
+        ]
+      },
+      "C(ref B)": {
+        "$ref": "#/components/schemas/B(ref%20A)",
+        "title": "C-alias"
+      },
+      "B(ref A)": {
+        "type": "object",
+        "properties": {
+          "idB": {
+            "type": "string",
+            "description": "ID"
+          },
+          "id": {
+            "type": "null",
+            "description": "ID"
+          },
+          "category": {
+            "type": "string",
+            "description": "group"
+          },
+          "name": {
+            "type": "string",
+            "description": "name"
+          }
+        },
+        "required": [
+          "idB",
+          "id",
+          "category",
+          "name"
+        ]
+      },
+      "⭐A": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "null",
+            "description": "ID"
+          },
+          "category": {
+            "type": "string",
+            "description": "group"
+          },
+          "name": {
+            "type": "string",
+            "description": "name"
+          }
+        },
+        "required": [
+          "id",
+          "category",
+          "name"
+        ],
+        "title": ""
+      },
+      "MockTestType1": {
+        "type": "object",
+        "properties": {
+          "SmartMock": {
+            "type": "object",
+            "properties": {
+              "match_ip": {
+                "type": "string",
+                "description": "命中智能 mock 规则 ip",
+                "title": ""
+              },
+              "dismatch_ip": {
+                "type": "boolean",
+                "description": "类型不符合，不命中智能ip，应返回布尔类型"
+              }
+            },
+            "title": "智能mock",
+            "description": "入口-项目设置项目设置"
+          },
+          "SelfDefinedSmartMock": {
+            "type": "object",
+            "properties": {
+              "match_phone_self_defined": {
+                "type": "string",
+                "description": "该字段符合自定义mock规则"
+              },
+              "dismatch_phone_self_defined": {
+                "type": "boolean",
+                "description": "该字段类型不符合，则不返回自定义智能mock"
+              },
+              "match_phone_self_defined_null": {
+                "type": "string",
+                "description": "允许null",
+                "nullable": true
+              },
+              "match_phone_self_defined_unnecessary": {
+                "type": "string",
+                "description": "非必需"
+              }
+            },
+            "title": "自定义智能mock",
+            "required": [
+              "match_phone_self_defined",
+              "dismatch_phone_self_defined",
+              "match_phone_self_defined_null"
+            ],
+            "description": "入口-项目设置.同时匹配自定义mock和智能mock时，优先自定义mock"
+          },
+          "ApiDefined": {
+            "type": "object",
+            "properties": {
+              "advance_setting_enum": {
+                "type": "string",
+                "description": "字段高级设置，设置了枚举",
+                "enum": [
+                  "api_defined_high"
+                ],
+                "title": "字段高级设置"
+              },
+              "field_mock": {
+                "type": "string",
+                "title": "字段mock"
+              },
+              "advance_setting_enum&field_mock": {
+                "type": "string",
+                "title": "高级设置和mock同时",
+                "enum": [
+                  "api_defined_high"
+                ],
+                "description": "字段mock>字段高级设置"
+              }
+            },
+            "title": "字段定义",
+            "description": "字段编辑器做了定义"
+          }
+        },
+        "required": [
+          "SmartMock",
+          "SelfDefinedSmartMock",
+          "ApiDefined"
+        ]
+      },
+      "TypeNotAllowNull2": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "name",
+          "id"
+        ]
+      },
+      "C(ref B)3": {
+        "$ref": "#/components/schemas/B(ref%20A)4",
+        "title": "C-alias"
+      },
+      "B(ref A)4": {
+        "type": "object",
+        "properties": {
+          "idB": {
+            "type": "string",
+            "description": "ID"
+          },
+          "id": {
+            "type": "null",
+            "description": "ID"
+          },
+          "category": {
+            "type": "string",
+            "description": "group"
+          },
+          "name": {
+            "type": "string",
+            "description": "name"
+          }
+        },
+        "required": [
+          "idB",
+          "id",
+          "category",
+          "name"
+        ]
+      },
+      "⭐A5": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "null",
+            "description": "ID"
+          },
+          "category": {
+            "type": "string",
+            "description": "group"
+          },
+          "name": {
+            "type": "string",
+            "description": "name"
+          }
+        },
+        "required": [
+          "id",
+          "category",
+          "name"
+        ],
+        "title": ""
+      }
+    },
+    "responses": {
+      "404": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "title": "",
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "success",
+                "data"
+              ]
+            }
+          }
+        }
+      },
+      "参数不正确-全局": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      },
+      "记录不存在": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      },
+      "参数不正确": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      },
+      "新建成功（示例）": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        }
+      },
+      "记录不存在（示例）": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "title": "错误码表示不存在"
+                },
+                "message": {
+                  "type": "string",
+                  "title": "错误提示"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      },
+      "修改成功（示例）": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        }
+      },
+      "服务出错": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        }
+      },
+      "参数不正确（示例）": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      },
+      "全局默认off": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "off": {
+                  "type": "boolean"
+                },
+                "errorCode": {
+                  "type": "string"
+                },
+                "errorMessage": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "off",
+                "errorCode",
+                "errorMessage"
+              ]
+            }
+          }
+        }
+      },
+      "Invalid input": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      },
+      "Record not found": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "code11": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "code11",
+                "message"
+              ]
+            }
+          }
+        }
+      },
+      "组件1-所有字段类型": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "f_array",
+                "f_obj",
+                "f_string",
+                "f_int",
+                "f_bool",
+                "f_number",
+                "f_null",
+                "f_any",
+                "f_allof",
+                "f_oneof",
+                "f_anyof",
+                "f_required_nullable",
+                "multi",
+                "f_bigint",
+                "f_datatype_halfRef",
+                "f_datatype_allRef"
+              ],
+              "type": "object",
+              "properties": {
+                "f_array": {
+                  "type": "array",
+                  "xml": {
+                    "name": "photoUrl",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "tttt",
+                      "kkk"
+                    ],
+                    "description": "设置了枚举值"
+                  }
+                },
+                "f_obj": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "f_obj_array": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "f_obj_obj": {
+                      "type": "object",
+                      "properties": {
+                        "xx_id": {
+                          "type": "string"
+                        },
+                        "xx_name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "xx_id",
+                        "xx_name"
+                      ],
+                      "description": "obj多层嵌套"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "id",
+                    "f_obj_array",
+                    "f_obj_obj"
+                  ],
+                  "description": "允许null",
+                  "nullable": true
+                },
+                "f_string": {
+                  "type": "string",
+                  "enum": [
+                    "available",
+                    "pending",
+                    "sold"
+                  ],
+                  "description": "设置了枚举值"
+                },
+                "f_int": {
+                  "type": "integer"
+                },
+                "f_bool": {
+                  "type": "boolean"
+                },
+                "f_number": {
+                  "type": "number"
+                },
+                "f_null": {
+                  "type": "null"
+                },
+                "f_any": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "array"
+                    },
+                    {
+                      "type": "object"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ]
+                },
+                "f_allof": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "id2": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ]
+                    }
+                  ]
+                },
+                "f_oneof": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name0": {
+                          "type": "string"
+                        },
+                        "id0": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name0"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name1": {
+                          "type": "string"
+                        },
+                        "id1": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name1"
+                      ]
+                    }
+                  ]
+                },
+                "f_anyof": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "id2": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ]
+                    }
+                  ]
+                },
+                "f_required_nullable": {
+                  "type": "string",
+                  "description": "必填&允许空&datetime&有枚举值",
+                  "format": "Date-Time",
+                  "title": "",
+                  "enum": [
+                    "1970-01-10",
+                    "2022-01-10"
+                  ],
+                  "nullable": true
+                },
+                "multi": {
+                  "type": "object",
+                  "properties": {
+                    "f_array_array": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "f_array_obj": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "id"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "f_array_array",
+                    "f_array_obj"
+                  ],
+                  "description": "多层嵌套"
+                },
+                "f_bigint": {
+                  "type": "integer"
+                },
+                "f_datatype_halfRef": {
+                  "type": "object",
+                  "properties": {},
+                  "description": "模型引用_半引用"
+                },
+                "f_datatype_allRef": {
+                  "description": "模型全引用",
+                  "$ref": "#/components/schemas/TypeNotAllowNull2"
+                },
+                "f_unrequired_notnull": {
+                  "type": "string",
+                  "description": "非必填&不允许空&datetime&有枚举值"
+                },
+                "f_obj_unnecessary": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name"
+                  ]
+                }
+              },
+              "title": "ALLtypeEnglish勿改"
+            },
+            "examples": {
+              "组件1-示例1": {
+                "summary": "组件1-示例1",
+                "value": {
+                  "f_array": [
+                    "kkk",
+                    "kkk",
+                    "kkk"
+                  ],
+                  "f_obj": null,
+                  "f_string": "available",
+                  "f_int": 10,
+                  "f_bool": true,
+                  "f_number": 2,
+                  "f_null": null,
+                  "f_any": [],
+                  "f_allof": {
+                    "name": "平国包权",
+                    "id2": "34",
+                    "id": "94"
+                  },
+                  "f_oneof": {
+                    "name1": "响低真北状提",
+                    "id1": "73"
+                  },
+                  "f_anyof": {
+                    "name": "用角会资题非厂",
+                    "id2": "100"
+                  },
+                  "f_required_nullable": "2022-01-10",
+                  "multi": {
+                    "f_array_array": [
+                      [
+                        "cupidatat sint in laboris ea"
+                      ],
+                      [
+                        "proident nisi mollit aliquip do",
+                        "commodo est",
+                        "dolor",
+                        "ullamco"
+                      ],
+                      [
+                        "sint ex officia ut proident",
+                        "reprehenderit sint",
+                        "voluptate",
+                        "ut magna aliquip",
+                        "sit do voluptate id"
+                      ],
+                      [
+                        "minim ut",
+                        "irure exercitation eiusmod esse quis"
+                      ]
+                    ],
+                    "f_array_obj": [
+                      {
+                        "name": "会称即自",
+                        "id": "39"
+                      }
+                    ]
+                  },
+                  "f_bigint": 1503289371362545700,
+                  "f_datatype_halfRef": {
+                    "SmartMock": {
+                      "match_phone": "13291527501",
+                      "dismatch_phone": true
+                    }
+                  },
+                  "f_datatype_allRef": {
+                    "name": "再内中",
+                    "id": 50
+                  },
+                  "f_obj_unnecessary": {
+                    "id": "77",
+                    "name": "者确界"
+                  },
+                  "f_unrequired_notnull": "qui cillum nostrud Excepteur tempor"
+                }
+              },
+              "组件1-示例2": {
+                "summary": "组件1-示例2",
+                "value": {
+                  "f_array": [
+                    "tttt",
+                    "kkk",
+                    "kkk",
+                    "tttt"
+                  ],
+                  "f_obj": null,
+                  "f_string": "sold",
+                  "f_int": 70,
+                  "f_bool": false,
+                  "f_number": 41,
+                  "f_null": null,
+                  "f_any": {},
+                  "f_allof": {
+                    "name": "存信本",
+                    "id": "68",
+                    "id2": "85"
+                  },
+                  "f_oneof": {
+                    "name0": "种要少用应需",
+                    "id0": "44"
+                  },
+                  "f_anyof": {
+                    "name": "而意系论真",
+                    "id2": "91"
+                  },
+                  "f_required_nullable": "2022-01-10",
+                  "multi": {
+                    "f_array_array": [
+                      [
+                        "nostrud cillum sit"
+                      ],
+                      [
+                        "in laboris nulla",
+                        "labore aliqua",
+                        "eu aute",
+                        "sunt aute elit irure do",
+                        "ad dolore eiusmod sint id"
+                      ],
+                      [
+                        "nulla mollit aute dolor"
+                      ],
+                      [
+                        "officia laboris fugiat",
+                        "exercitation",
+                        "exercitation velit consequat",
+                        "sit"
+                      ],
+                      [
+                        "aliquip Duis dolor et dolore",
+                        "anim sed"
+                      ]
+                    ],
+                    "f_array_obj": [
+                      {
+                        "name": "后器将将它会些",
+                        "id": "20"
+                      }
+                    ]
+                  },
+                  "f_bigint": 1503289371362545700,
+                  "f_datatype_halfRef": {
+                    "SmartMock": {
+                      "match_phone": "18645437726",
+                      "dismatch_phone": false
+                    }
+                  },
+                  "f_datatype_allRef": {
+                    "name": "们干派",
+                    "id": 65
+                  },
+                  "f_unrequired_notnull": "minim est elit cupidatat Lorem",
+                  "f_obj_unnecessary": {
+                    "id": "25",
+                    "name": "象流将"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "组件2-全局默认on&有示例": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "result"
+              ]
+            },
+            "examples": {
+              "Success": {
+                "summary": "Success",
+                "value": {
+                  "result": "全局响应组件，新接口默认on"
+                }
+              }
+            }
+          }
+        }
+      },
+      "组件3-新建默认off&无示例": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "off": {
+                  "type": "boolean"
+                },
+                "errorCode": {
+                  "type": "string"
+                },
+                "errorMessage": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "off",
+                "errorCode",
+                "errorMessage"
+              ]
+            }
+          }
+        }
+      },
+      "回归-DefaultMockType-响应组件-有示例": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "compoentResult1": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "compoentResult1"
+              ]
+            },
+            "examples": {
+              "Success": {
+                "summary": "Success",
+                "value": {
+                  "compoentResult1": "compoent sample"
+                }
+              }
+            }
+          }
+        }
+      },
+      "回归-DefaultMockType-响应组件-无示例": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "compoentResult2": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Resp.Components-json-ref C": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/C(ref%20B)3"
+            }
+          }
+        }
+      },
+      "Resp.Components-xml-ref C": {
+        "description": "",
+        "content": {
+          "application/xml": {
+            "schema": {
+              "$ref": "#/components/schemas/C(ref%20B)3"
+            }
+          }
+        }
+      },
+      "Resp.Components-msgpack-ref C": {
+        "description": "",
+        "content": {
+          "application/x-msgpack": {
+            "schema": {
+              "$ref": "#/components/schemas/C(ref%20B)3"
+            }
+          }
+        }
+      },
+      "Resp.Components-json-additionalProperties-ref C": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "title": "",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/C(ref%20B)3"
+              }
+            }
+          }
+        }
+      },
+      "❌Resp.Components-json-ref C=>raw": {
+        "description": "",
+        "content": {
+          "application/octet-stream": {
+            "schema": {
+              "$ref": "#/components/schemas/C(ref%20B)3"
+            }
+          }
+        }
+      },
+      "【main】Resp.Components-json-ref C": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/C(ref%20B)3"
+            }
+          }
+        }
+      },
+      "M2_Resp1": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "title": "",
+              "type": "object",
+              "properties": {
+                "M2_Resp1_item": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string",
+                  "description": "ID 编号"
+                }
+              },
+              "required": [
+                "M2_Resp1_item",
+                "id"
+              ]
+            }
+          }
+        }
+      },
+      "M2_Resp2": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "title": "",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "ID 编号"
+                },
+                "M2_Resp2_item": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "M2_Resp2_item",
+                "id"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {}
+  },
+  "servers": [],
+  "security": []
+}
