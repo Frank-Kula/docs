@@ -1,0 +1,2375 @@
+{
+  "apidogProject": "1.0.0",
+  "$schema": {
+    "app": "apidog",
+    "type": "project",
+    "version": "1.2.0"
+  },
+  "info": {
+    "name": "Pet Store-0713",
+    "description": "",
+    "mockRule": {
+      "rules": [],
+      "enableSystemRule": true
+    }
+  },
+  "projectSetting": {
+    "id": "2900",
+    "auth": {},
+    "securityScheme": {},
+    "gateway": [],
+    "language": "en-US",
+    "apiStatuses": [
+      "developing",
+      "testing",
+      "released",
+      "deprecated"
+    ],
+    "mockSettings": {},
+    "preProcessors": [],
+    "postProcessors": [],
+    "advancedSettings": {
+      "enableJsonc": false,
+      "enableBigint": false,
+      "responseValidate": true,
+      "enableTestScenarioSetting": false,
+      "enableYAPICompatScript": false,
+      "isDefaultUrlEncoding": 3,
+      "publishedDocUrlRules": {
+        "defaultRule": "SLUGIFY_WITH_RESOURCE_KEY",
+        "resourceKeyStandard": "NEW"
+      },
+      "folderShareExpandModeSettings": {
+        "expandId": [],
+        "mode": "AUTO"
+      }
+    },
+    "initialDisabledMockIds": [],
+    "servers": [
+      {
+        "id": "7133",
+        "name": "Default Server",
+        "moduleId": 7133
+      }
+    ],
+    "cloudMock": {
+      "enable": false,
+      "security": "free",
+      "tokenKey": "apidogToken",
+      "isCreatedAutomaticallyByDefaultConfigFromAdmin": true
+    }
+  },
+  "apiCollection": [
+    {
+      "name": "Root",
+      "id": 33602,
+      "auth": {},
+      "securityScheme": {},
+      "parentId": 0,
+      "serverId": "",
+      "description": "",
+      "identityPattern": {
+        "httpApi": {
+          "type": "methodAndPath",
+          "bodyType": "",
+          "fields": []
+        }
+      },
+      "shareSettings": {},
+      "visibility": "SHARED",
+      "moduleId": 7133,
+      "preProcessors": [
+        {
+          "id": "inheritProcessors",
+          "type": "inheritProcessors",
+          "data": {}
+        }
+      ],
+      "postProcessors": [
+        {
+          "id": "inheritProcessors",
+          "type": "inheritProcessors",
+          "data": {}
+        }
+      ],
+      "inheritPostProcessors": {},
+      "inheritPreProcessors": {},
+      "items": [
+        {
+          "name": "user",
+          "id": 33605,
+          "auth": {},
+          "securityScheme": {},
+          "parentId": 0,
+          "serverId": "",
+          "description": "",
+          "identityPattern": {
+            "httpApi": {
+              "type": "inherit",
+              "bodyType": "",
+              "fields": []
+            }
+          },
+          "shareSettings": {},
+          "visibility": "INHERITED",
+          "moduleId": 7133,
+          "preProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "postProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "inheritPostProcessors": {},
+          "inheritPreProcessors": {},
+          "items": [
+            {
+              "name": "Creates list of users with given input array",
+              "api": {
+                "id": "139144",
+                "method": "post",
+                "path": "/user/createWithList",
+                "parameters": {
+                  "path": [],
+                  "query": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {},
+                "responses": [
+                  {
+                    "id": "180245411",
+                    "code": "200",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apidog-orders": []
+                    },
+                    "itemSchema": {},
+                    "description": "successful operation",
+                    "contentType": "json",
+                    "mediaType": "application/json",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "application/json",
+                  "parameters": [],
+                  "jsonSchema": {
+                    "$ref": "#/definitions/64493"
+                  },
+                  "mediaType": "application/json",
+                  "oasExtensions": "",
+                  "required": false,
+                  "additionalContentTypes": []
+                },
+                "description": "",
+                "tags": [
+                  "user"
+                ],
+                "status": "released",
+                "serverId": "",
+                "operationId": "createUsersWithListInput",
+                "sourceUrl": "",
+                "ordering": 6,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [],
+                "visibility": "INHERITED",
+                "moduleId": 7133,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Get user by user name",
+              "api": {
+                "id": "139145",
+                "method": "get",
+                "path": "/user/{username}",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "username#0",
+                      "name": "username",
+                      "required": true,
+                      "enable": true,
+                      "description": "The name that needs to be fetched. Use user1 for testing. ",
+                      "example": "",
+                      "type": "string",
+                      "schema": {
+                        "type": "string"
+                      },
+                      "omitGeneratedExample": false
+                    }
+                  ],
+                  "query": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {},
+                "responses": [
+                  {
+                    "id": "145812265",
+                    "code": "200",
+                    "headers": [],
+                    "jsonSchema": {
+                      "$ref": "#/definitions/64492"
+                    },
+                    "itemSchema": {},
+                    "description": "successful operation",
+                    "contentType": "json",
+                    "mediaType": "application/json",
+                    "oasExtensions": ""
+                  },
+                  {
+                    "id": "150136807",
+                    "code": "400",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apidog-orders": []
+                    },
+                    "itemSchema": {},
+                    "description": "Invalid username supplied",
+                    "contentType": "json",
+                    "mediaType": "application/json",
+                    "oasExtensions": ""
+                  },
+                  {
+                    "id": "149495465",
+                    "code": "404",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apidog-orders": []
+                    },
+                    "itemSchema": {},
+                    "description": "User not found",
+                    "contentType": "json",
+                    "mediaType": "application/json",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "required": false,
+                  "additionalContentTypes": [],
+                  "oasExtensions": ""
+                },
+                "description": "",
+                "tags": [
+                  "user"
+                ],
+                "status": "released",
+                "serverId": "",
+                "operationId": "getUserByName",
+                "sourceUrl": "",
+                "ordering": 12,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [],
+                "visibility": "INHERITED",
+                "moduleId": 7133,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Updated user",
+              "api": {
+                "id": "139146",
+                "method": "put",
+                "path": "/user/{username}",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "username#0",
+                      "name": "username",
+                      "required": true,
+                      "enable": true,
+                      "description": "name that need to be updated",
+                      "example": "",
+                      "type": "string",
+                      "schema": {
+                        "type": "string"
+                      },
+                      "omitGeneratedExample": false
+                    }
+                  ],
+                  "query": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {},
+                "responses": [
+                  {
+                    "id": "170801807",
+                    "code": "400",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apidog-orders": []
+                    },
+                    "itemSchema": {},
+                    "description": "Invalid user supplied",
+                    "contentType": "json",
+                    "mediaType": "application/json",
+                    "oasExtensions": ""
+                  },
+                  {
+                    "id": "122070037",
+                    "code": "404",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apidog-orders": []
+                    },
+                    "itemSchema": {},
+                    "description": "User not found",
+                    "contentType": "json",
+                    "mediaType": "application/json",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "application/json",
+                  "parameters": [],
+                  "jsonSchema": {
+                    "$ref": "#/definitions/64492"
+                  },
+                  "mediaType": "application/json",
+                  "oasExtensions": "",
+                  "required": false,
+                  "additionalContentTypes": []
+                },
+                "description": "This can only be done by the logged in user.",
+                "tags": [
+                  "user"
+                ],
+                "status": "released",
+                "serverId": "",
+                "operationId": "updateUser",
+                "sourceUrl": "",
+                "ordering": 18,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [],
+                "visibility": "INHERITED",
+                "moduleId": 7133,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Delete user",
+              "api": {
+                "id": "139147",
+                "method": "delete",
+                "path": "/user/{username}",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "username#0",
+                      "name": "username",
+                      "required": true,
+                      "enable": true,
+                      "description": "The name that needs to be deleted",
+                      "example": "",
+                      "type": "string",
+                      "schema": {
+                        "type": "string"
+                      },
+                      "omitGeneratedExample": false
+                    }
+                  ],
+                  "query": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {},
+                "responses": [
+                  {
+                    "id": "159352399",
+                    "code": "400",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apidog-orders": []
+                    },
+                    "itemSchema": {},
+                    "description": "Invalid username supplied",
+                    "contentType": "json",
+                    "mediaType": "application/json",
+                    "oasExtensions": ""
+                  },
+                  {
+                    "id": "157712688",
+                    "code": "404",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apidog-orders": []
+                    },
+                    "itemSchema": {},
+                    "description": "User not found",
+                    "contentType": "json",
+                    "mediaType": "application/json",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "required": false,
+                  "additionalContentTypes": [],
+                  "oasExtensions": ""
+                },
+                "description": "This can only be done by the logged in user.",
+                "tags": [
+                  "user"
+                ],
+                "status": "released",
+                "serverId": "",
+                "operationId": "deleteUser",
+                "sourceUrl": "",
+                "ordering": 24,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [],
+                "visibility": "INHERITED",
+                "moduleId": 7133,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Logs user into the system",
+              "api": {
+                "id": "139148",
+                "method": "get",
+                "path": "/user/login",
+                "parameters": {
+                  "path": [],
+                  "query": [
+                    {
+                      "id": "zdFDkgk8vC",
+                      "name": "username",
+                      "required": true,
+                      "enable": true,
+                      "description": "The user name for login",
+                      "example": "",
+                      "type": "string",
+                      "schema": {
+                        "type": "string"
+                      },
+                      "omitGeneratedExample": false
+                    },
+                    {
+                      "id": "ovgdkZBOGr",
+                      "name": "password",
+                      "required": true,
+                      "enable": true,
+                      "description": "The password for login in clear text",
+                      "example": "",
+                      "type": "string",
+                      "schema": {
+                        "type": "string"
+                      },
+                      "omitGeneratedExample": false
+                    }
+                  ],
+                  "cookie": [],
+                  "header": []
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {},
+                "responses": [
+                  {
+                    "id": "101490104",
+                    "code": "200",
+                    "headers": [
+                      {
+                        "name": "X-Expires-After",
+                        "type": "string",
+                        "description": "date in UTC when token expires",
+                        "schema": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "required": false,
+                        "id": "baca2ddd-7c6d-465c-95e8-04a1512c7f26"
+                      },
+                      {
+                        "name": "X-Rate-Limit",
+                        "type": "integer",
+                        "description": "calls per hour allowed by the user",
+                        "schema": {
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "required": false,
+                        "id": "a7a79634-63fb-4b15-b564-9af2ebaf0f5e"
+                      }
+                    ],
+                    "jsonSchema": {
+                      "type": "string"
+                    },
+                    "itemSchema": {},
+                    "description": "successful operation",
+                    "contentType": "json",
+                    "mediaType": "application/json",
+                    "oasExtensions": ""
+                  },
+                  {
+                    "id": "126669857",
+                    "code": "400",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apidog-orders": []
+                    },
+                    "itemSchema": {},
+                    "description": "Invalid username/password supplied",
+                    "contentType": "json",
+                    "mediaType": "application/json",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "required": false,
+                  "additionalContentTypes": [],
+                  "oasExtensions": ""
+                },
+                "description": "",
+                "tags": [
+                  "user"
+                ],
+                "status": "released",
+                "serverId": "",
+                "operationId": "loginUser",
+                "sourceUrl": "",
+                "ordering": 30,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [],
+                "visibility": "INHERITED",
+                "moduleId": 7133,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Logs out current logged in user session",
+              "api": {
+                "id": "139149",
+                "method": "get",
+                "path": "/user/logout",
+                "parameters": {
+                  "path": [],
+                  "query": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {},
+                "responses": [
+                  {
+                    "id": "171719383",
+                    "code": "200",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apidog-orders": []
+                    },
+                    "itemSchema": {},
+                    "description": "successful operation",
+                    "contentType": "json",
+                    "mediaType": "application/json",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "required": false,
+                  "additionalContentTypes": [],
+                  "oasExtensions": ""
+                },
+                "description": "",
+                "tags": [
+                  "user"
+                ],
+                "status": "released",
+                "serverId": "",
+                "operationId": "logoutUser",
+                "sourceUrl": "",
+                "ordering": 36,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [],
+                "visibility": "INHERITED",
+                "moduleId": 7133,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Creates list of users with given input array",
+              "api": {
+                "id": "139150",
+                "method": "post",
+                "path": "/user/createWithArray",
+                "parameters": {
+                  "path": [],
+                  "query": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {},
+                "responses": [
+                  {
+                    "id": "126982101",
+                    "code": "200",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apidog-orders": []
+                    },
+                    "itemSchema": {},
+                    "description": "successful operation",
+                    "contentType": "json",
+                    "mediaType": "application/json",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "application/json",
+                  "parameters": [],
+                  "jsonSchema": {
+                    "$ref": "#/definitions/64493"
+                  },
+                  "mediaType": "application/json",
+                  "oasExtensions": "",
+                  "required": false,
+                  "additionalContentTypes": []
+                },
+                "description": "",
+                "tags": [
+                  "user"
+                ],
+                "status": "released",
+                "serverId": "",
+                "operationId": "createUsersWithArrayInput",
+                "sourceUrl": "",
+                "ordering": 42,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [],
+                "visibility": "INHERITED",
+                "moduleId": 7133,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Create user",
+              "api": {
+                "id": "139151",
+                "method": "post",
+                "path": "/user",
+                "parameters": {
+                  "path": [],
+                  "query": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {},
+                "responses": [
+                  {
+                    "id": "139818234",
+                    "code": "200",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apidog-orders": []
+                    },
+                    "itemSchema": {},
+                    "description": "successful operation",
+                    "contentType": "json",
+                    "mediaType": "application/json",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "application/json",
+                  "parameters": [],
+                  "jsonSchema": {
+                    "$ref": "#/definitions/64492"
+                  },
+                  "mediaType": "application/json",
+                  "oasExtensions": "",
+                  "required": false,
+                  "additionalContentTypes": []
+                },
+                "description": "This can only be done by the logged in user.",
+                "tags": [
+                  "user"
+                ],
+                "status": "released",
+                "serverId": "",
+                "operationId": "createUser",
+                "sourceUrl": "",
+                "ordering": 48,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [],
+                "visibility": "INHERITED",
+                "moduleId": 7133,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "socketCollection": [],
+  "docCollection": [],
+  "responseCollection": [
+    {
+      "_databaseId": 9107,
+      "updatedAt": "2026-07-13T04:24:51.000Z",
+      "id": 9107,
+      "name": "Root",
+      "type": "root",
+      "children": [],
+      "moduleId": 7133,
+      "parentId": 0,
+      "ordering": [],
+      "items": []
+    }
+  ],
+  "schemaCollection": [
+    {
+      "id": 12702,
+      "name": "Root",
+      "visibility": "SHARED",
+      "moduleId": 7133,
+      "items": [
+        {
+          "name": "User",
+          "displayName": "",
+          "id": "#/definitions/64492",
+          "description": "",
+          "schema": {
+            "jsonSchema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "username": {
+                  "type": "string"
+                },
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "phone": {
+                  "type": "string"
+                },
+                "userStatus": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "User Status"
+                }
+              },
+              "xml": {
+                "name": "User"
+              },
+              "x-apidog-orders": [
+                "id",
+                "username",
+                "firstName",
+                "lastName",
+                "email",
+                "password",
+                "phone",
+                "userStatus"
+              ]
+            }
+          },
+          "visibility": "INHERITED",
+          "moduleId": 7133
+        },
+        {
+          "name": "UserArray",
+          "displayName": "",
+          "id": "#/definitions/64493",
+          "description": "",
+          "schema": {
+            "jsonSchema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/64492"
+              }
+            }
+          },
+          "visibility": "INHERITED",
+          "moduleId": 7133
+        }
+      ]
+    }
+  ],
+  "securitySchemeCollection": [
+    {
+      "id": 354441,
+      "moduleId": 7133,
+      "name": "Root",
+      "items": [],
+      "ordering": []
+    }
+  ],
+  "oasComponentCollection": [],
+  "requestCollection": [
+    {
+      "name": "Root",
+      "children": [],
+      "items": [
+        {
+          "id": 278,
+          "name": "/pets",
+          "method": "post",
+          "path": "/pets",
+          "requestBody": {
+            "type": "application/json",
+            "jsonSchema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "species": {
+                  "type": "string"
+                },
+                "breed": {
+                  "type": "string"
+                },
+                "ageMonths": {
+                  "type": "integer"
+                },
+                "size": {
+                  "type": "string"
+                },
+                "color": {
+                  "type": "string"
+                },
+                "gender": {
+                  "type": "string"
+                },
+                "goodWithKids": {
+                  "type": "boolean"
+                },
+                "price": {
+                  "type": "string"
+                },
+                "currency": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "medicalInfo": {
+                  "type": "object",
+                  "properties": {
+                    "vaccinated": {
+                      "type": "boolean"
+                    },
+                    "spayedNeutered": {
+                      "type": "boolean"
+                    },
+                    "microchipped": {
+                      "type": "boolean"
+                    },
+                    "specialNeeds": {
+                      "type": "boolean"
+                    },
+                    "healthNotes": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "vaccinated",
+                    "spayedNeutered",
+                    "microchipped",
+                    "specialNeeds",
+                    "healthNotes"
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "species",
+                "breed",
+                "ageMonths",
+                "size",
+                "color",
+                "gender",
+                "goodWithKids",
+                "price",
+                "currency",
+                "status",
+                "description",
+                "medicalInfo"
+              ]
+            },
+            "example": "{\n    \"name\": \"Max\",\n    \"species\": \"DOG\",\n    \"breed\": \"Golden Retriever\",\n    \"ageMonths\": 24,\n    \"size\": \"LARGE\",\n    \"color\": \"Golden\",\n    \"gender\": \"MALE\",\n    \"goodWithKids\": true,\n    \"price\": \"250.00\",\n    \"currency\": \"USD\",\n    \"status\": \"AVAILABLE\",\n    \"description\": \"Friendly golden retriever looking for an active family\",\n    \"medicalInfo\": {\n        \"vaccinated\": true,\n        \"spayedNeutered\": true,\n        \"microchipped\": true,\n        \"specialNeeds\": false,\n        \"healthNotes\": \"Up to date on all vaccinations\"\n    }\n}",
+            "data": "{\n    \"name\": \"Max\",\n    \"species\": \"DOG\",\n    \"breed\": \"Golden Retriever\",\n    \"ageMonths\": 24,\n    \"size\": \"LARGE\",\n    \"color\": \"Golden\",\n    \"gender\": \"MALE\",\n    \"goodWithKids\": true,\n    \"price\": \"250.00\",\n    \"currency\": \"USD\",\n    \"status\": \"AVAILABLE\",\n    \"description\": \"Friendly golden retriever looking for an active family\",\n    \"medicalInfo\": {\n        \"vaccinated\": true,\n        \"spayedNeutered\": true,\n        \"microchipped\": true,\n        \"specialNeeds\": false,\n        \"healthNotes\": \"Up to date on all vaccinations\"\n    }\n}"
+          },
+          "parameters": {
+            "header": [
+              {
+                "name": "Content-Type",
+                "value": "application/json",
+                "sampleValue": "application/json",
+                "enable": true
+              },
+              {
+                "name": "Authorization",
+                "value": "Bearer {{bearerToken}}",
+                "sampleValue": "Bearer {{bearerToken}}",
+                "enable": true
+              }
+            ]
+          },
+          "commonParameters": {
+            "query": [],
+            "body": [],
+            "header": [],
+            "cookie": []
+          },
+          "preProcessors": [],
+          "postProcessors": [],
+          "auth": {},
+          "advancedSettings": {},
+          "folderId": 0,
+          "createdAt": "2026-07-13T03:23:57.000Z",
+          "updatedAt": "2026-07-13T03:23:57.000Z",
+          "projectId": 2900,
+          "creatorId": 11,
+          "editorId": 11
+        }
+      ]
+    }
+  ],
+  "apiTestCaseCollection": [
+    {
+      "id": 0,
+      "name": "Root",
+      "children": [],
+      "items": [
+        {
+          "steps": [
+            {
+              "name": "Add a new pet to the store",
+              "number": 1,
+              "type": "http",
+              "bind": false,
+              "disable": false,
+              "bindType": "API",
+              "bindId": 138925,
+              "syncMode": "MANUAL",
+              "httpApiCase": {
+                "id": 220821,
+                "name": "Success",
+                "method": "post",
+                "path": "/pets",
+                "auth": {
+                  "type": "securityscheme"
+                },
+                "type": "DEBUG_CASE",
+                "options": {
+                  "duplicatedFrom": 28402273
+                },
+                "parameters": {
+                  "query": [],
+                  "header": [],
+                  "cookie": [],
+                  "path": []
+                },
+                "responseId": "195809258",
+                "requestBody": {
+                  "parameters": [],
+                  "type": "application/json",
+                  "data": "{\n    \"species\": \"DOG\",\n    \"name\": \"Max\",\n    \"breed\": \"Labrador Retriever\",\n    \"ageMonths\": 36,\n    \"size\": \"LARGE\",\n    \"color\": \"Black\",\n    \"gender\": \"MALE\",\n    \"goodWithKids\": true,\n    \"price\": \"75.00\",\n    \"currency\": \"GBP\",\n    \"description\": \"Friendly golden retriever looking for an active family\",\n    \"status\": \"AVAILABLE\",\n    \"photos\": [\n        \"https://loremflickr.com/400/400?lock=1471270180780413\"\n    ],\n    \"medicalInfo\": {\n        \"spayedNeutered\": true,\n        \"vaccinated\": true,\n        \"microchipped\": true,\n        \"specialNeeds\": false,\n        \"healthNotes\": \"Up to date on all vaccinations\"\n    }\n}",
+                  "jsonSchema": {
+                    "$ref": "#/definitions/12204619"
+                  },
+                  "generateMode": "normal"
+                },
+                "preProcessors": [
+                  {
+                    "type": "placeholder",
+                    "renderType": "dynamicValueDivider",
+                    "defaultEnable": false,
+                    "enable": false
+                  }
+                ],
+                "postProcessors": [],
+                "advancedSettings": {
+                  "disabledSystemHeaders": {},
+                  "isDefaultUrlEncoding": 1
+                },
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "header": [],
+                  "cookie": []
+                },
+                "inheritPreProcessors": {},
+                "inheritPostProcessors": {},
+                "inheritPreProcessorsSnapshot": [],
+                "inheritPostProcessorsSnapshot": [],
+                "moduleId": 7122,
+                "apiId": 138925
+              }
+            },
+            {
+              "name": "Get the pet info just added",
+              "number": 2,
+              "type": "http",
+              "bind": false,
+              "disable": false,
+              "bindType": "API",
+              "bindId": 138926,
+              "syncMode": "MANUAL",
+              "httpApiCase": {
+                "id": 220820,
+                "name": "Pet for sale",
+                "method": "get",
+                "path": "/pets/{id}",
+                "auth": {
+                  "type": "securityscheme"
+                },
+                "type": "DEBUG_CASE",
+                "options": {
+                  "duplicatedFrom": 28402277
+                },
+                "parameters": {
+                  "query": [],
+                  "header": [],
+                  "cookie": [],
+                  "path": [
+                    {
+                      "id": "id#0",
+                      "name": "id",
+                      "value": "{{$.1.response.body.id}}",
+                      "type": "string",
+                      "description": "",
+                      "enable": true,
+                      "isDelete": false,
+                      "relatedName": "id"
+                    }
+                  ]
+                },
+                "responseId": "153352157",
+                "requestBody": {
+                  "parameters": [],
+                  "type": "none",
+                  "data": "",
+                  "generateMode": "normal"
+                },
+                "preProcessors": [
+                  {
+                    "type": "placeholder",
+                    "renderType": "dynamicValueDivider",
+                    "defaultEnable": false,
+                    "enable": false
+                  }
+                ],
+                "postProcessors": [
+                  {
+                    "type": "assertion",
+                    "data": {
+                      "name": "Pet id found",
+                      "subject": "responseJson",
+                      "comparison": "exists",
+                      "value": "",
+                      "path": "$.id",
+                      "multipleValue": [],
+                      "extractSettings": {
+                        "expression": "$.id",
+                        "continueExtractorSettings": {
+                          "isContinueExtractValue": false,
+                          "JsonArrayValueIndexValue": ""
+                        }
+                      }
+                    },
+                    "defaultEnable": false,
+                    "enable": true
+                  }
+                ],
+                "advancedSettings": {
+                  "disabledSystemHeaders": {},
+                  "isDefaultUrlEncoding": 1
+                },
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "header": [],
+                  "cookie": []
+                },
+                "inheritPreProcessors": {},
+                "inheritPostProcessors": {},
+                "inheritPreProcessorsSnapshot": [],
+                "inheritPostProcessorsSnapshot": [],
+                "moduleId": 7122,
+                "apiId": 138926
+              }
+            },
+            {
+              "name": "Update the pet status to \"ADOPTED\"",
+              "number": 3,
+              "type": "http",
+              "bind": false,
+              "disable": false,
+              "bindType": "API",
+              "bindId": 138927,
+              "syncMode": "MANUAL",
+              "syncContent": [
+                "URL"
+              ],
+              "httpApiCase": {
+                "id": 220819,
+                "name": "Success",
+                "method": "put",
+                "path": "/pets/{id}",
+                "auth": {
+                  "type": "securityscheme"
+                },
+                "type": "DEBUG_CASE",
+                "options": {
+                  "duplicatedFrom": 28402274
+                },
+                "parameters": {
+                  "query": [],
+                  "header": [],
+                  "cookie": [],
+                  "path": [
+                    {
+                      "id": "id#0",
+                      "name": "id",
+                      "value": "{{$.1.response.body.id}}",
+                      "type": "string",
+                      "description": "",
+                      "enable": true,
+                      "isDelete": false,
+                      "relatedName": "id"
+                    }
+                  ]
+                },
+                "responseId": "175827223",
+                "requestBody": {
+                  "parameters": [],
+                  "type": "application/json",
+                  "data": "{\n    \"status\": \"ADOPTED\"\n}",
+                  "jsonSchema": {
+                    "$ref": "#/definitions/12204619"
+                  },
+                  "generateMode": "example"
+                },
+                "preProcessors": [
+                  {
+                    "type": "placeholder",
+                    "renderType": "dynamicValueDivider",
+                    "defaultEnable": false,
+                    "enable": false
+                  }
+                ],
+                "postProcessors": [],
+                "advancedSettings": {
+                  "disabledSystemHeaders": {},
+                  "isDefaultUrlEncoding": 3,
+                  "disableUrlEncoding": false
+                },
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "header": [],
+                  "cookie": []
+                },
+                "inheritPreProcessors": {},
+                "inheritPostProcessors": {},
+                "inheritPreProcessorsSnapshot": [],
+                "inheritPostProcessorsSnapshot": [],
+                "moduleId": 7122,
+                "apiId": 138927
+              }
+            },
+            {
+              "name": "Validate the updation",
+              "number": 6,
+              "type": "http",
+              "bind": false,
+              "disable": false,
+              "bindType": "API",
+              "bindId": 138926,
+              "syncMode": "MANUAL",
+              "httpApiCase": {
+                "id": 220818,
+                "name": "Pet for sale",
+                "method": "get",
+                "path": "/pets/{id}",
+                "auth": {
+                  "type": "securityscheme"
+                },
+                "type": "DEBUG_CASE",
+                "options": {
+                  "duplicatedFrom": 28402277
+                },
+                "parameters": {
+                  "query": [],
+                  "header": [],
+                  "cookie": [],
+                  "path": [
+                    {
+                      "id": "id#0",
+                      "name": "id",
+                      "value": "{{$.1.response.body.id}}",
+                      "type": "string",
+                      "description": "",
+                      "enable": true,
+                      "isDelete": false,
+                      "relatedName": "id"
+                    }
+                  ]
+                },
+                "responseId": "153352157",
+                "requestBody": {
+                  "parameters": [],
+                  "type": "none",
+                  "data": "",
+                  "generateMode": "normal"
+                },
+                "preProcessors": [
+                  {
+                    "type": "placeholder",
+                    "renderType": "dynamicValueDivider",
+                    "defaultEnable": false,
+                    "enable": false
+                  }
+                ],
+                "postProcessors": [
+                  {
+                    "type": "assertion",
+                    "data": {
+                      "name": "Pet status is updated to \"ADOPTED\"",
+                      "subject": "responseJson",
+                      "comparison": "equal",
+                      "value": "ADOPTED",
+                      "path": "$.status",
+                      "multipleValue": [],
+                      "extractSettings": {
+                        "expression": "$.status",
+                        "continueExtractorSettings": {
+                          "isContinueExtractValue": false,
+                          "JsonArrayValueIndexValue": ""
+                        }
+                      }
+                    },
+                    "defaultEnable": false,
+                    "enable": true
+                  }
+                ],
+                "advancedSettings": {
+                  "disabledSystemHeaders": {},
+                  "isDefaultUrlEncoding": 1
+                },
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "header": [],
+                  "cookie": []
+                },
+                "inheritPreProcessors": {},
+                "inheritPostProcessors": {},
+                "inheritPreProcessorsSnapshot": [],
+                "inheritPostProcessorsSnapshot": [],
+                "moduleId": 7122,
+                "apiId": 138926
+              }
+            },
+            {
+              "name": "Deletes the pet",
+              "number": 4,
+              "type": "http",
+              "bind": false,
+              "disable": false,
+              "bindType": "API",
+              "bindId": 138928,
+              "syncMode": "MANUAL",
+              "httpApiCase": {
+                "id": 220817,
+                "name": "Success",
+                "method": "delete",
+                "path": "/pets/{id}",
+                "auth": {},
+                "type": "DEBUG_CASE",
+                "options": {
+                  "duplicatedFrom": 28402279
+                },
+                "parameters": {
+                  "query": [],
+                  "header": [
+                    {
+                      "id": "XJohHo0zVi",
+                      "relatedName": "api_key",
+                      "name": "api_key",
+                      "value": "",
+                      "type": "string",
+                      "description": "",
+                      "enable": true,
+                      "isDelete": false
+                    }
+                  ],
+                  "cookie": [],
+                  "path": [
+                    {
+                      "id": "id#0",
+                      "name": "id",
+                      "enable": true,
+                      "isDelete": false,
+                      "value": "{{$.1.response.body.id}}",
+                      "type": "string",
+                      "description": "",
+                      "relatedName": "id"
+                    }
+                  ]
+                },
+                "responseId": "168923389",
+                "requestBody": {
+                  "parameters": [],
+                  "type": "none",
+                  "data": "",
+                  "generateMode": "normal"
+                },
+                "preProcessors": [
+                  {
+                    "type": "placeholder",
+                    "renderType": "dynamicValueDivider",
+                    "defaultEnable": false,
+                    "enable": false
+                  }
+                ],
+                "postProcessors": [],
+                "advancedSettings": {
+                  "disabledSystemHeaders": {},
+                  "isDefaultUrlEncoding": 3,
+                  "disableUrlEncoding": false
+                },
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "header": [],
+                  "cookie": []
+                },
+                "inheritPreProcessors": {},
+                "inheritPostProcessors": {},
+                "inheritPreProcessorsSnapshot": [],
+                "inheritPostProcessorsSnapshot": [],
+                "moduleId": 7122,
+                "apiId": 138928
+              }
+            },
+            {
+              "name": "Validate the deletion",
+              "number": 5,
+              "type": "http",
+              "bind": false,
+              "disable": false,
+              "bindType": "API",
+              "bindId": 138926,
+              "syncMode": "MANUAL",
+              "httpApiCase": {
+                "id": 220816,
+                "name": "Pet for sale",
+                "method": "get",
+                "path": "/pet/{id}",
+                "auth": {},
+                "type": "DEBUG_CASE",
+                "options": {
+                  "duplicatedFrom": 28402277
+                },
+                "parameters": {
+                  "query": [],
+                  "header": [],
+                  "cookie": [],
+                  "path": [
+                    {
+                      "id": "id#0",
+                      "name": "id",
+                      "value": "{{$.1.response.body.id}}",
+                      "type": "string",
+                      "description": "",
+                      "enable": true,
+                      "isDelete": false,
+                      "relatedName": "id"
+                    }
+                  ]
+                },
+                "responseId": "0",
+                "requestBody": {
+                  "parameters": [],
+                  "type": "none",
+                  "data": "",
+                  "generateMode": "normal"
+                },
+                "preProcessors": [
+                  {
+                    "type": "placeholder",
+                    "renderType": "dynamicValueDivider",
+                    "defaultEnable": false,
+                    "enable": false
+                  }
+                ],
+                "postProcessors": [],
+                "advancedSettings": {
+                  "disabledSystemHeaders": {},
+                  "isDefaultUrlEncoding": 3,
+                  "disableUrlEncoding": false
+                },
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "header": [],
+                  "cookie": []
+                },
+                "inheritPreProcessors": {},
+                "inheritPostProcessors": {},
+                "inheritPreProcessorsSnapshot": [],
+                "inheritPostProcessorsSnapshot": [],
+                "moduleId": 7122,
+                "apiId": 138926
+              }
+            }
+          ],
+          "id": 4486,
+          "name": "Test CRUD pet",
+          "tags": [],
+          "options": {},
+          "priority": 2,
+          "ordering": -10,
+          "description": "",
+          "preProcessors": [],
+          "postProcessors": [],
+          "children": [],
+          "performanceTestOptions": {},
+          "apiTestDataSets": []
+        },
+        {
+          "steps": [
+            {
+              "name": "Finds Pets by status = PENDING",
+              "number": 1,
+              "type": "http",
+              "bind": false,
+              "disable": false,
+              "bindType": "API",
+              "bindId": 138924,
+              "syncMode": "MANUAL",
+              "httpApiCase": {
+                "id": 220822,
+                "name": "Finds Pets by status",
+                "method": "get",
+                "path": "/pets",
+                "auth": {
+                  "type": "securityscheme"
+                },
+                "type": "DEBUG_CASE",
+                "options": {},
+                "parameters": {
+                  "query": [
+                    {
+                      "id": "K1Jf0WMmAg",
+                      "relatedName": "status",
+                      "name": "status",
+                      "value": [
+                        "PENDING"
+                      ],
+                      "type": "array",
+                      "description": "",
+                      "enable": true,
+                      "isDelete": false
+                    },
+                    {
+                      "id": "qo5ujXQuzP",
+                      "relatedName": "tags",
+                      "name": "tags",
+                      "value": [
+                        "dog, fish"
+                      ],
+                      "type": "array",
+                      "description": "",
+                      "enable": false,
+                      "isDelete": false
+                    }
+                  ],
+                  "header": [],
+                  "cookie": [],
+                  "path": []
+                },
+                "responseId": "172079940",
+                "requestBody": {
+                  "parameters": [],
+                  "type": "none",
+                  "data": "",
+                  "generateMode": "normal"
+                },
+                "preProcessors": [
+                  {
+                    "type": "placeholder",
+                    "renderType": "dynamicValueDivider",
+                    "defaultEnable": false,
+                    "enable": false
+                  }
+                ],
+                "postProcessors": [],
+                "advancedSettings": {
+                  "disabledSystemHeaders": {},
+                  "isDefaultUrlEncoding": 3,
+                  "disableUrlEncoding": false
+                },
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "header": [],
+                  "cookie": []
+                },
+                "inheritPreProcessors": {},
+                "inheritPostProcessors": {},
+                "inheritPreProcessorsSnapshot": [],
+                "inheritPostProcessorsSnapshot": [],
+                "moduleId": 7122,
+                "apiId": 138924
+              }
+            },
+            {
+              "id": "0a5faab8-c388-4877-8779-b5a2ff38fc90",
+              "type": "forEach",
+              "disable": false,
+              "parameters": {
+                "array": "{{$.1.response.body}}",
+                "disableOnError": false
+              },
+              "children": [
+                {
+                  "name": "Update pet status to \"ADOPTED\"",
+                  "number": 3,
+                  "type": "http",
+                  "bind": false,
+                  "disable": false,
+                  "bindType": "API",
+                  "bindId": 138927,
+                  "syncMode": "MANUAL",
+                  "syncContent": [
+                    "URL"
+                  ],
+                  "httpApiCase": {
+                    "id": 220823,
+                    "name": "Update an existing pet",
+                    "method": "put",
+                    "path": "/pets/{id}",
+                    "auth": {
+                      "type": "securityscheme"
+                    },
+                    "type": "DEBUG_CASE",
+                    "options": {},
+                    "parameters": {
+                      "query": [],
+                      "header": [],
+                      "cookie": [],
+                      "path": [
+                        {
+                          "id": "id#0",
+                          "name": "id",
+                          "value": "{{$.2.element.id}}",
+                          "type": "string",
+                          "description": "",
+                          "enable": true,
+                          "isDelete": false,
+                          "relatedName": "id"
+                        }
+                      ]
+                    },
+                    "responseId": "175827223",
+                    "requestBody": {
+                      "parameters": [],
+                      "type": "application/json",
+                      "data": "{\n    \"status\": \"ADOPTED\"\n}",
+                      "jsonSchema": {
+                        "$ref": "#/definitions/12204619"
+                      },
+                      "generateMode": "example"
+                    },
+                    "preProcessors": [
+                      {
+                        "type": "placeholder",
+                        "renderType": "dynamicValueDivider",
+                        "defaultEnable": false,
+                        "enable": false
+                      }
+                    ],
+                    "postProcessors": [],
+                    "advancedSettings": {
+                      "disabledSystemHeaders": {},
+                      "isDefaultUrlEncoding": 3,
+                      "disableUrlEncoding": false
+                    },
+                    "commonParameters": {
+                      "query": [],
+                      "body": [],
+                      "header": [],
+                      "cookie": []
+                    },
+                    "inheritPreProcessors": {},
+                    "inheritPostProcessors": {},
+                    "inheritPreProcessorsSnapshot": [],
+                    "inheritPostProcessorsSnapshot": [],
+                    "moduleId": 7122,
+                    "apiId": 138927
+                  }
+                }
+              ],
+              "isOpen": true,
+              "number": 2
+            },
+            {
+              "id": "25f678f8-b7fb-4ece-b44c-6783533ebd58",
+              "type": "forEach",
+              "disable": false,
+              "parameters": {
+                "array": "{{$.1.response.body}}",
+                "disableOnError": false
+              },
+              "children": [
+                {
+                  "name": "Validate that the pet status has been changed to \"ADOPTED\"",
+                  "number": 5,
+                  "type": "http",
+                  "bind": false,
+                  "disable": false,
+                  "bindType": "API",
+                  "bindId": 138926,
+                  "syncMode": "MANUAL",
+                  "httpApiCase": {
+                    "id": 220824,
+                    "name": "Pet for sale",
+                    "method": "get",
+                    "path": "/pets/{id}",
+                    "auth": {
+                      "type": "securityscheme"
+                    },
+                    "type": "DEBUG_CASE",
+                    "options": {
+                      "duplicatedFrom": 28402277
+                    },
+                    "parameters": {
+                      "query": [],
+                      "header": [],
+                      "cookie": [],
+                      "path": [
+                        {
+                          "id": "id#0",
+                          "name": "id",
+                          "value": "{{$.4.element.id}}",
+                          "type": "string",
+                          "description": "",
+                          "enable": true,
+                          "isDelete": false,
+                          "relatedName": "id"
+                        }
+                      ]
+                    },
+                    "responseId": "153352157",
+                    "requestBody": {
+                      "parameters": [],
+                      "type": "none",
+                      "data": "",
+                      "generateMode": "normal"
+                    },
+                    "preProcessors": [
+                      {
+                        "type": "placeholder",
+                        "renderType": "dynamicValueDivider",
+                        "defaultEnable": false,
+                        "enable": false
+                      }
+                    ],
+                    "postProcessors": [
+                      {
+                        "type": "assertion",
+                        "data": {
+                          "name": "Pet status updated to \"ADOPTED\"",
+                          "subject": "responseJson",
+                          "comparison": "equal",
+                          "value": "ADOPTED",
+                          "path": "$.status",
+                          "multipleValue": [],
+                          "extractSettings": {
+                            "expression": "$.status",
+                            "continueExtractorSettings": {
+                              "isContinueExtractValue": false,
+                              "JsonArrayValueIndexValue": ""
+                            }
+                          }
+                        },
+                        "defaultEnable": false,
+                        "enable": true
+                      }
+                    ],
+                    "advancedSettings": {
+                      "disabledSystemHeaders": {},
+                      "isDefaultUrlEncoding": 3,
+                      "disableUrlEncoding": false
+                    },
+                    "commonParameters": {
+                      "query": [],
+                      "body": [],
+                      "header": [],
+                      "cookie": []
+                    },
+                    "inheritPreProcessors": {},
+                    "inheritPostProcessors": {},
+                    "inheritPreProcessorsSnapshot": [],
+                    "inheritPostProcessorsSnapshot": [],
+                    "moduleId": 7122,
+                    "apiId": 138926
+                  }
+                }
+              ],
+              "isOpen": true,
+              "number": 4
+            }
+          ],
+          "id": 4487,
+          "name": "Test bulk update",
+          "tags": [],
+          "options": {},
+          "priority": 2,
+          "ordering": -9,
+          "description": "",
+          "preProcessors": [],
+          "postProcessors": [],
+          "children": [],
+          "performanceTestOptions": {},
+          "apiTestDataSets": []
+        },
+        {
+          "steps": [
+            {
+              "name": "List Pets",
+              "number": 1,
+              "type": "http",
+              "bind": false,
+              "disable": false,
+              "bindType": "API",
+              "bindId": 138924,
+              "syncMode": "MANUAL",
+              "httpApiCase": {
+                "id": 221064,
+                "name": "",
+                "method": "get",
+                "path": "/pets",
+                "auth": {},
+                "type": "DEBUG_CASE",
+                "options": {},
+                "parameters": {
+                  "path": [],
+                  "query": [
+                    {
+                      "id": "OrnURCzqkP",
+                      "relatedId": "OrnURCzqkP",
+                      "name": "species",
+                      "enable": true,
+                      "description": "Filter by pet species",
+                      "type": "string"
+                    },
+                    {
+                      "id": "YpaWoGdGiB",
+                      "relatedId": "YpaWoGdGiB",
+                      "name": "status",
+                      "enable": true,
+                      "description": "Filter by adoption status",
+                      "type": "string"
+                    },
+                    {
+                      "id": "eJcq1HC6WG",
+                      "relatedId": "eJcq1HC6WG",
+                      "name": "ageMin",
+                      "enable": true,
+                      "description": "Minimum age in months",
+                      "type": "integer"
+                    },
+                    {
+                      "id": "ZT2NlDi2Oy",
+                      "relatedId": "ZT2NlDi2Oy",
+                      "name": "ageMax",
+                      "enable": true,
+                      "description": "Maximum age in months",
+                      "type": "integer"
+                    },
+                    {
+                      "id": "Iqg28U6Vz7",
+                      "relatedId": "Iqg28U6Vz7",
+                      "name": "size",
+                      "enable": true,
+                      "description": "Filter by pet size",
+                      "type": "string"
+                    },
+                    {
+                      "id": "x3Vltjyiqo",
+                      "relatedId": "x3Vltjyiqo",
+                      "name": "goodWithKids",
+                      "enable": true,
+                      "description": "Filter pets that are good with children",
+                      "type": "boolean"
+                    },
+                    {
+                      "id": "DwCv8sgKmC",
+                      "relatedId": "DwCv8sgKmC",
+                      "name": "page",
+                      "enable": true,
+                      "description": "Page number for pagination",
+                      "type": "integer"
+                    },
+                    {
+                      "id": "OJ2ed6ac2B",
+                      "relatedId": "OJ2ed6ac2B",
+                      "name": "limit",
+                      "enable": true,
+                      "description": "Number of items per page",
+                      "type": "integer"
+                    }
+                  ],
+                  "cookie": [],
+                  "header": []
+                },
+                "responseId": "172079940",
+                "requestBody": {
+                  "parameters": [],
+                  "type": "none",
+                  "data": ""
+                },
+                "preProcessors": [],
+                "postProcessors": [],
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "commonParameters": {},
+                "inheritPreProcessors": {},
+                "inheritPostProcessors": {},
+                "inheritPreProcessorsSnapshot": [],
+                "inheritPostProcessorsSnapshot": [],
+                "moduleId": 7122,
+                "apiId": 138924
+              }
+            },
+            {
+              "name": "Create Pet",
+              "number": 2,
+              "type": "http",
+              "bind": false,
+              "disable": false,
+              "bindType": "API",
+              "bindId": 138925,
+              "syncMode": "MANUAL",
+              "httpApiCase": {
+                "id": 221063,
+                "name": "",
+                "method": "post",
+                "path": "/pets",
+                "auth": {
+                  "type": "securityscheme"
+                },
+                "type": "DEBUG_CASE",
+                "options": {},
+                "parameters": {
+                  "path": [],
+                  "query": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responseId": "195809258",
+                "requestBody": {
+                  "parameters": [],
+                  "type": "application/json",
+                  "data": "{\n    \"species\": \"DOG\",\n    \"name\": \"Whiskers\",\n    \"breed\": \"Domestic Shorthair\",\n    \"ageMonths\": 18,\n    \"size\": \"LARGE\",\n    \"color\": \"Black\",\n    \"gender\": \"MALE\",\n    \"goodWithKids\": true,\n    \"price\": \"50.00\",\n    \"currency\": \"USD\",\n    \"description\": \"Friendly golden retriever looking for an active family\",\n    \"status\": \"AVAILABLE\",\n    \"photos\": [\n        \"\"\n    ],\n    \"medicalInfo\": {\n        \"spayedNeutered\": true,\n        \"vaccinated\": true,\n        \"microchipped\": true,\n        \"specialNeeds\": false,\n        \"healthNotes\": \"Up to date on all vaccinations\"\n    }\n}"
+                },
+                "preProcessors": [],
+                "postProcessors": [],
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "commonParameters": {},
+                "inheritPreProcessors": {},
+                "inheritPostProcessors": {},
+                "inheritPreProcessorsSnapshot": [],
+                "inheritPostProcessorsSnapshot": [],
+                "moduleId": 7122,
+                "apiId": 138925
+              }
+            },
+            {
+              "name": "Get Pet",
+              "number": 3,
+              "type": "http",
+              "bind": false,
+              "disable": false,
+              "bindType": "API",
+              "bindId": 138926,
+              "syncMode": "MANUAL",
+              "httpApiCase": {
+                "id": 221065,
+                "name": "",
+                "method": "get",
+                "path": "/pets/{id}",
+                "auth": {},
+                "type": "DEBUG_CASE",
+                "options": {},
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "id#0",
+                      "relatedId": "id#0",
+                      "name": "id",
+                      "value": "019bb615-7755-7389-b5fc-9165193e1146",
+                      "enable": true,
+                      "description": "",
+                      "type": "string"
+                    }
+                  ],
+                  "query": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responseId": "153352157",
+                "requestBody": {
+                  "parameters": [],
+                  "type": "none",
+                  "data": ""
+                },
+                "preProcessors": [],
+                "postProcessors": [],
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "inheritPreProcessors": {},
+                "inheritPostProcessors": {},
+                "inheritPreProcessorsSnapshot": [],
+                "inheritPostProcessorsSnapshot": [],
+                "moduleId": 7122,
+                "apiId": 138926
+              }
+            }
+          ],
+          "id": 4490,
+          "name": "test",
+          "tags": [],
+          "options": {},
+          "priority": 2,
+          "ordering": 1,
+          "description": "",
+          "preProcessors": [],
+          "postProcessors": [],
+          "children": [],
+          "performanceTestOptions": {},
+          "apiTestDataSets": []
+        }
+      ]
+    }
+  ],
+  "testCaseReferences": [],
+  "environments": [
+    {
+      "name": "Production Env",
+      "requestProxyAgentSettings": {},
+      "variables": [
+        {
+          "name": "petId",
+          "securityType": "default",
+          "value": "",
+          "description": "",
+          "initialValue": "",
+          "isSync": true
+        }
+      ],
+      "parameters": {
+        "cookie": [],
+        "query": [],
+        "header": [],
+        "body": []
+      },
+      "type": "normal",
+      "visibility": "protected",
+      "ordering": 0,
+      "tags": [
+        {
+          "name": "",
+          "color": "#1890FF"
+        }
+      ],
+      "advancedSettings": {},
+      "id": "19418",
+      "baseUrl": "https://api.petstoreapi.com/v1",
+      "baseUrls": {
+        "7122": "https://api.petstoreapi.com/v1"
+      },
+      "socketioBaseUrls": {
+        "7122": "wss://ws.postman-echo.com/socketio"
+      },
+      "websocketBaseUrls": {
+        "7122": "wss://echo.websocket.org"
+      }
+    }
+  ],
+  "commonScripts": [],
+  "databaseConnections": [],
+  "globalVariables": [],
+  "commonParameters": null,
+  "customFunctions": [],
+  "projectTestCaseCategories": [
+    {
+      "id": 4328,
+      "name": "Positive",
+      "description": "Valid inputs and correct expected results, representing typical usage."
+    },
+    {
+      "id": 4329,
+      "name": "Negative",
+      "description": "Negative, invalid inputs such as missing fields, wrong types, unsupported methods, etc."
+    },
+    {
+      "id": 4330,
+      "name": "Boundary",
+      "description": "Extreme or edge conditions, such as maximum string length, empty values, zero, null, etc."
+    },
+    {
+      "id": 4331,
+      "name": "Security",
+      "description": "Test cases that may expose API security risks."
+    },
+    {
+      "id": 4332,
+      "name": "Other",
+      "description": "Test cases not classified under existing categories."
+    }
+  ],
+  "projectTestCaseTags": [
+    {
+      "id": 24128,
+      "name": "Required Fields Only",
+      "description": "Send only the required fields with valid values, omitting all optional fields, to test minimal valid requests."
+    },
+    {
+      "id": 24129,
+      "name": "Valid Semantic",
+      "description": "Use values that are syntactically correct and also make sense in the business logic or domain context."
+    },
+    {
+      "id": 24130,
+      "name": "Enum Combination Coverage",
+      "description": "For all enum-type parameters, apply orthogonal design to systematically construct test case combinations of parameters and their enum values, dedicated to testing enum coverage."
+    },
+    {
+      "id": 24131,
+      "name": "Other Positive Case",
+      "description": "Provide realistic and valid inputs that match the API specification, producing the correct and expected result."
+    },
+    {
+      "id": 24132,
+      "name": "Missing Required Fields",
+      "description": "Omit one or more required fields in the request body or parameters."
+    },
+    {
+      "id": 24133,
+      "name": "Invalid Values",
+      "description": "Provide values that are within the correct type and format, but logically invalid for the field."
+    },
+    {
+      "id": 24134,
+      "name": "Type Errors",
+      "description": "Use values with incorrect data types, such as sending a string instead of an integer."
+    },
+    {
+      "id": 24135,
+      "name": "Format Errors",
+      "description": "Provide values in an incorrect format, e.g., wrong date pattern, malformed email address."
+    },
+    {
+      "id": 24136,
+      "name": "Semantic Errors",
+      "description": "Use syntactically correct and properly formatted values that are logically impossible or violate domain rules."
+    },
+    {
+      "id": 24137,
+      "name": "Other Negative Case",
+      "description": "Provide invalid or unexpected inputs that should trigger error handling or rejection by the API."
+    },
+    {
+      "id": 24138,
+      "name": "Null",
+      "description": "Must be the JSON literal `null` (not empty, not \"null\")."
+    },
+    {
+      "id": 24139,
+      "name": "Zero",
+      "description": "Must be the numeric literal 0."
+    },
+    {
+      "id": 24140,
+      "name": "Empty Values",
+      "description": "Must be \"\"."
+    },
+    {
+      "id": 24141,
+      "name": "Max Values",
+      "description": "Provide the exact minimum and maximum allowed values for numeric or date fields."
+    },
+    {
+      "id": 24142,
+      "name": "Min Values",
+      "description": "Provide the exact minimum and maximum allowed values for numeric or date fields."
+    },
+    {
+      "id": 24143,
+      "name": "Overflow",
+      "description": "Provide values just beyond the allowed minimum or maximum boundaries."
+    },
+    {
+      "id": 24144,
+      "name": "Underflow",
+      "description": "Provide values just beyond the allowed minimum or maximum boundaries."
+    },
+    {
+      "id": 24145,
+      "name": "Overly Long Strings",
+      "description": "Provide strings longer than the maximum allowed length, or shorter than the minimum required length."
+    },
+    {
+      "id": 24146,
+      "name": "Overly Short Strings",
+      "description": "Provide strings longer than the maximum allowed length, or shorter than the minimum required length."
+    },
+    {
+      "id": 24147,
+      "name": "Broken Object Level Authorization",
+      "description": "Users access or manipulate data objects without proper authorization."
+    },
+    {
+      "id": 24148,
+      "name": "Access Control",
+      "description": "Restricting resources and actions users can access based on roles, permissions, or attributes."
+    },
+    {
+      "id": 24149,
+      "name": "Auth Failures",
+      "description": "Authentication is weak, misconfigured, or bypassed, allowing unauthorized access."
+    },
+    {
+      "id": 24150,
+      "name": "SQL Injection",
+      "description": "Insert malicious SQL code into input fields to test for SQL injection vulnerabilities."
+    },
+    {
+      "id": 24151,
+      "name": "XSS Injection",
+      "description": "Inject JavaScript or HTML tags to test for cross-site scripting vulnerabilities."
+    },
+    {
+      "id": 24152,
+      "name": "Fuzzy Input",
+      "description": "Send large or randomly generated payloads to test input validation and stability."
+    },
+    {
+      "id": 24153,
+      "name": "Command Injection",
+      "description": "Insert shell commands into inputs to test for command execution vulnerabilities."
+    },
+    {
+      "id": 24154,
+      "name": "JSON Injection",
+      "description": "Insert malicious or unexpected JSON structures to test parsing and validation."
+    },
+    {
+      "id": 24155,
+      "name": "NoSQL Injection",
+      "description": "Provide NoSQL-specific malicious queries or operators to test for injection vulnerabilities."
+    },
+    {
+      "id": 24156,
+      "name": "Other",
+      "description": "Test cases not classified under existing categories."
+    }
+  ],
+  "projectAssociations": [],
+  "moduleSettings": [
+    {
+      "id": "7133",
+      "name": "import-from git",
+      "description": "这里是 OAS 描述...",
+      "moduleVariables": [],
+      "openApiInfo": {}
+    }
+  ]
+}
