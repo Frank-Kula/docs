@@ -1,7 +1,6 @@
 openapi: 3.0.1
 info:
   title: main_all_openapi3.0_yaml
-  description: null
   version: 1.0.0
 tags: []
 paths:
