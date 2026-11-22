@@ -2,7 +2,6 @@
   "openapi": "3.0.1",
   "info": {
     "title": "模块三-相同服务测试A",
-    "description": null,
     "version": "1.0.0"
   },
   "tags": [
