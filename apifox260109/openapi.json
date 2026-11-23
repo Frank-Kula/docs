@@ -17,6 +17,10 @@
     {
       "url": "http://dev-cn.your-api-server.com/default/B",
       "description": "开发环境"
+    },
+    {
+      "url": "",
+      "description": "测试环境"
     }
   ],
   "security": [],
