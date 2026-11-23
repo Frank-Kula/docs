@@ -4069,7 +4069,12 @@
       }
     }
   },
-  "servers": [],
+  "servers": [
+    {
+      "url": "",
+      "description": "Auth_变量测试"
+    }
+  ],
   "security": [],
   "x-ext-example": "这里是示例 OAS 扩展"
 }
